@@ -17,5 +17,22 @@ namespace StarChart.Controllers
         {
             _context = context;
         }
+
+        [HttpGet("{id:int}")]
+        [ActionName("GetById")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _context.CelestialObjects.FindAsync(id);
+
+            if (result != null)
+            {
+                return Ok();
+            } 
+            else
+            {
+                result.Satellites.Add(result);
+                return NotFound();
+            }
+        }
     }
 }
