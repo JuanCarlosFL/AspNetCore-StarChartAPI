@@ -26,11 +26,11 @@ namespace StarChart.Controllers
 
             if (result != null)
             {
+                result.Satellites.Add(result);
                 return Ok();
             } 
             else
             {
-                result.Satellites.Add(result);
                 return NotFound();
             }
         }
